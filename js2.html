@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript2</title>
+	<style type="text/css">
+		#but1
+		{
+			height:50px;
+			width:90px;
+			border:2px solid grey;
+			color:white;
+			background-color: blue;
+			border-radius: 10px;
+		}
+		table
+		{
+			border: 2px solid black;
+		}
+	</style>
+	<script type="text/javascript">
+		function change()
+		{
+			var b=document.getElementById('but1');
+			if(b.value=="Unlike")
+			{
+				b.setAttribute('value',"Like");
+				b.style.backgroundColor="blue";
+			}
+			else if(b.value=="Like")
+			{
+				b.setAttribute('value',"Unlike");
+				b.style.backgroundColor="red";
+			}
+		}
+		function hide()
+		{
+			var rows=document.getElementById('bd').childNodes;
+			for(var i=1;i<rows.length;i++)
+			{
+				if(((i-1)/2)%2==0)
+					rows[i].style.display="none";
+			}
+		}
+		function show()
+		{
+			var rows=document.getElementById('bd').childNodes;
+			for(var i=1;i<rows.length;i++)
+			{
+				if(((i-1)/2)%2==0)
+					rows[i].style.display="";
+			}
+		}
+		function check()
+		{
+			var elem=document.getElementById("textfield");
+			var val=elem.value;
+			if(!(/^0|[1-9][0-9]*$/.test(val) || val==" " || val==""))
+			{
+				elem.style.backgroundColor='red';
+				elem.setAttribute('readonly','true');
+				setTimeout(function(){elem.removeAttribute('readonly'); elem.style.backgroundColor='white';},5000);
+			}
+		}
+	</script>
+</head>
+<body>
+<form action="#" onsubmit="change();">
+	<input type="SUBMIT" value="Like" id="but1">
+</form>
+<br><br><br>
+<table border="2" id="table">
+	<tbody id="bd">
+		<tr><td>row1</td></tr>
+		<tr><td>row2</td></tr>
+		<tr><td>row3</td></tr>
+		<tr><td>row4</td></tr>
+		<tr><td>row5</td></tr>
+		<tr><td>row6</td></tr>
+		<tr><td>row7</td></tr>
+		<tr><td>row8</td></tr>
+	</tbody>		
+</table>
+<br>
+<button id="hide" onclick="hide();">Hide Odd rows</button>
+<br><br>
+<button id="show" onclick="show();">Show Odd rows</button>
+<br><br>
+Enter the numbers:<input type="text" id="textfield" onkeyup="check();">
+</body>
+</html>
